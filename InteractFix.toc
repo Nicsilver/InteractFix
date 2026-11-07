@@ -9,6 +9,6 @@
 ## X-License: MIT
 # The packager treats 0 as "no project" and skips that site. Replace each 0 with the real ID.
 ## X-Curse-Project-ID: 1790402
-## X-Wago-ID: 0
+## X-Wago-ID: qKQgn7Nx
 
 Core.lua
