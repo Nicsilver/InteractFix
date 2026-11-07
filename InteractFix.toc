@@ -1,0 +1,9 @@
+## Interface: 16001
+## Title: InteractFix
+## Notes: Lets Interact with Mouseover switch to the enemy under the cursor
+## IconTexture: Interface\AddOns\InteractFix\icon.tga
+## Author: Nicolaj Jensen
+## Version: 1.0.0
+## SavedVariables: InteractFixDB
+
+Core.lua

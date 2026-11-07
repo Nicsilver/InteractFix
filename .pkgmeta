@@ -1,0 +1,7 @@
+package-as: InteractFix
+
+ignore:
+  - art
+  - README.md
+  - .github
+  - .gitignore
