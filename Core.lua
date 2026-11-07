@@ -51,8 +51,9 @@ driver:SetAttribute("_onattributechanged", [[
         button = "InteractFixRetargetButton"
     end
     if not button then return end
-    for _, attribute in ipairs({ "key1", "key2" }) do
-        local key = self:GetAttribute(attribute)
+    -- Restricted snippets reject any "{" or "}", so no table literal here.
+    for i = 1, 2 do
+        local key = self:GetAttribute("key" .. i)
         if key then self:SetBindingClick(true, key, button) end
     end
 ]])
@@ -97,7 +98,9 @@ events:SetScript("OnEvent", function(_, event)
     InteractFixDB = InteractFixDB or {}
     if InteractFixDB.softTargetEnabled or InteractFixDB.softTargetRestored then return end
     -- The fallback "anyinteract" path needs soft interact targeting.
-    C_CVar.SetCVar("SoftTargetInteract", "1")
+    if (tonumber(C_CVar.GetCVar("SoftTargetInteract")) or 0) < 1 then
+        C_CVar.SetCVar("SoftTargetInteract", "1")
+    end
     InteractFixDB.softTargetEnabled = true
     print("|cff33ff99InteractFix:|r on. Bind a key to Interact with Mouseover and use it over anything to switch to it.")
 end)
