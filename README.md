@@ -16,7 +16,7 @@ The stock Interact with Mouseover binding keeps your current target. With a targ
 
 InteractFix is built for the WoW Forever client.
 
-- **CurseForge:** install it from the InteractFix page on CurseForge, either with the CurseForge app (pick the WoW Forever client) or by downloading the file and unpacking it as described under Manual install.
+- **CurseForge:** install it from the [InteractFix page on CurseForge](https://www.curseforge.com/wow/addons/interactfix), either with the CurseForge app (pick the WoW Forever client) or by downloading the file and unpacking it as described under Manual install.
 - **Wago Addons:** download the latest file from the InteractFix page on Wago Addons and unpack it as described under Manual install.
 - **Manual install:** download the latest zip from the [GitHub releases](https://github.com/Nicsilver/InteractFix/releases) and unpack the `InteractFix` folder into `World of Warcraft/_forever_/Interface/AddOns/`, so that `InteractFix.toc` sits at `AddOns/InteractFix/InteractFix.toc`. You can also clone this repository there as `InteractFix`. Restart the game or type `/reload`.
 
