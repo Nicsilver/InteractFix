@@ -51,7 +51,7 @@ driver:SetAttribute("_onattributechanged", [[
         button = "InteractFixRetargetButton"
     end
     if not button then return end
-    -- Restricted snippets reject any "{" or "}", so no table literal here.
+    -- Restricted snippets reject brace characters anywhere, even in comments.
     for i = 1, 2 do
         local key = self:GetAttribute("key" .. i)
         if key then self:SetBindingClick(true, key, button) end
