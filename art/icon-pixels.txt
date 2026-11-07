@@ -1,0 +1,26 @@
+kkkkkkkkkkkkkkkkkkkk
+k..................k
+k..kkkkkkkkkkk.....k
+k..kkkk...kkkk.....k
+k..kk.......kk.....k
+k..k.........k.....k
+k..k..kk.kk..k.....k
+k..k..kk.kk..k.....k
+k..k....k.K..k.....k
+k..kk.....KKkk.....k
+k..kkk.k.kKWKk.....k
+k..kkk....KWWK.....k
+k..kkkkkkkKWWWK....k
+k.........KWWWWK...k
+k.........KWWWWWK..k
+k.........KWWWKKK..k
+k.........KWKWWK...k
+k.........KK.KWWK..k
+k.............KK...k
+kkkkkkkkkkkkkkkkkkkk
+
+. #ece6d8
+k #191613
+o #ece6d8
+K #191613
+W #ece6d8
