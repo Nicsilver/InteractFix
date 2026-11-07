@@ -1,9 +1,14 @@
 ## Interface: 16001
 ## Title: InteractFix
 ## Notes: Lets Interact with Mouseover switch to the enemy under the cursor
-## IconTexture: Interface\AddOns\InteractFix\icon.tga
 ## Author: Nicolaj Jensen
-## Version: 1.0.0
+## Version: @project-version@
+## IconTexture: Interface\AddOns\InteractFix\icon.tga
 ## SavedVariables: InteractFixDB
+## X-Website: https://github.com/Nicsilver/InteractFix
+## X-License: MIT
+# The packager treats 0 as "no project" and skips that site. Replace each 0 with the real ID.
+## X-Curse-Project-ID: 0
+## X-Wago-ID: 0
 
 Core.lua

@@ -47,7 +47,7 @@ driver:SetAttribute("_onattributechanged", [[
     local state = self:GetAttribute("state-hover")
     if state == "enemy" then
         button = "InteractFixAttackButton"
-    elseif state == "friend" and not self:GetAttribute("same") then
+    elseif state == "friendcombat" or (state == "friend" and not self:GetAttribute("same")) then
         button = "InteractFixRetargetButton"
     end
     if not button then return end
@@ -57,8 +57,11 @@ driver:SetAttribute("_onattributechanged", [[
         if key then self:SetBindingClick(true, key, button) end
     end
 ]])
+-- "same" is only refreshed outside combat, so in combat the state itself carries
+-- the fact: a stale "same" would otherwise leave a friendly unit on the stock key
+-- for the whole fight.
 RegisterAttributeDriver(driver, "state-hover",
-    "[@mouseover,noexists] none; [@target,noexists] none; [@mouseover,harm,nodead] enemy; friend")
+    "[@mouseover,noexists] none; [@target,noexists] none; [@mouseover,harm,nodead] enemy; [combat] friendcombat; friend")
 
 -- State drivers ignore mouseover changes and only poll every 0.2s, which is slow
 -- enough to miss a quick hover-and-scroll.

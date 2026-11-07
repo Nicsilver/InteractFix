@@ -1,7 +1,13 @@
 package-as: InteractFix
 
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
+
 ignore:
   - art
+  - docs
   - README.md
   - .github
   - .gitignore
+  - .gitattributes
