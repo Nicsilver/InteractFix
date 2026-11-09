@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+- New settings page (`/interactfix`, or Options > AddOns > InteractFix) with two options, both off by default.
+- Option: the key also sends your pet at the living hostile unit under the cursor, including when you have no target yet.
+- Option: with nothing under the cursor, the key sends your pet at your living hostile target. In that state the key no longer does the stock interact fallback.
+- Both options need a pet. Changes made in combat are saved at once and take effect when combat ends.
+
 ## 1.0.0
 
 - First release.

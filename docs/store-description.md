@@ -39,5 +39,5 @@ Source code and bug reports: https://github.com/Nicsilver/InteractFix
 - Friendly units and NPCs: clears the old target so the next press interacts
 - Follows your own Interact with Mouseover binding, including a second key
 - Works in combat
-- No settings, no slash commands, no libraries
+- No libraries, two optional pet attack settings (`/interactfix`)
 - MIT licensed
