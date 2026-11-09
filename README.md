@@ -32,7 +32,7 @@ On the first login it turns on the `SoftTargetInteract` console variable once, b
 
 - enemy under the cursor: `/target [@mouseover]` plus `/startattack` (and `/petattack [@mouseover,harm,nodead,pet]` with the first pet option)
 - non-enemy: `/cleartarget` in combat (always), `/target` out of combat when it isn't already your target
-- no unit under the cursor and a hostile target, with the second pet option: `/petattack [@target,harm,nodead,pet]`
+- no unit under the cursor and a hostile target, with the second pet option: `/startattack` plus `/petattack [@target,harm,nodead,pet]`
 
 With the pet options on and a pet out, two more states get the override (see Settings). In every other state the override is removed and Blizzard's own binding runs. Binding overrides can't change in combat, so the key is read from your bindings outside combat and the secure code picks the button inside it.
 
@@ -41,13 +41,13 @@ With the pet options on and a pet out, two more states get the override (see Set
 `/interactfix` opens the InteractFix page in the game's settings (Options > AddOns). Both options are off by default, so nothing changes until you turn one on. Both only act while your pet exists; without a pet the key behaves exactly as above.
 
 - **Pet attacks the enemy under the cursor:** the key sends the pet at a living hostile unit under the cursor, in addition to targeting it and starting your attack. This also covers an enemy under the cursor while you have no target, where the stock key would have handled it.
-- **Pet attacks your hostile target when nothing is under the cursor:** with no unit under the cursor and a living hostile target selected, the key sends the pet at that target.
+- **Pet attacks your hostile target when nothing is under the cursor:** with no unit under the cursor and a living hostile target selected, the key starts your attack (Hunters also start Auto Shot) and sends the pet at that target. This includes holding a mouse button to turn the camera, because the game reports no unit under the cursor then.
 
 The pet is never sent at a friendly unit, a dead unit or a unit you can't attack.
 
 Secure bindings can't be rewritten in combat. A setting changed during combat is saved at once, InteractFix says so in chat, and it takes effect when combat ends.
 
-With the second option on, the key no longer does the stock interact fallback in that state: while a living hostile target is selected and nothing is under the cursor, pressing it only sends the pet, so it won't loot or use a nearby object. Deselect the target to interact as usual.
+With the second option on, the key no longer does the stock interact fallback in that state: while a living hostile target is selected and nothing is under the cursor, pressing it only attacks, so it won't loot or use a nearby object. Deselect the target to interact as usual.
 
 ## Limits
 

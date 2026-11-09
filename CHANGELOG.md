@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+- Second pet option: the key now also starts your own attack on the target, including while a mouse button is held to turn the camera. Before, only the pet attacked.
+
 ## 1.1.0
 
 - New settings page (`/interactfix`, or Options > AddOns > InteractFix) with two options, both off by default.

@@ -30,17 +30,23 @@ end
 -- Two options add the pet to that (both off by default, see the settings panel):
 --   petMouseover: the enemy line also sends the pet, and the override stays on when
 --     the enemy is the only thing in play (no target yet).
---   petTarget: with nothing under the cursor, a hostile target gets the pet sent at it.
-local function attackLines(petMouseover)
-    local lines = {
-        "/target [@mouseover,harm,nodead]",
-        "/startattack [harm,nodead]",
-    }
+--   petTarget: with nothing under the cursor, a hostile target gets attacked and the
+--     pet sent at it. The cursor unit is also empty while the mouse is held to turn the
+--     camera, and the stock key attacks the target there, so this has to start the
+--     player's attack as well.
+local function playerAttackLines()
+    local lines = { "/startattack [harm,nodead]" }
     if select(2, UnitClass("player")) == "HUNTER" then
         -- Macros only take the localized spell name.
         local name = C_Spell.GetSpellName(AUTO_SHOT_ID) or "Auto Shot"
         lines[#lines + 1] = "/cast [harm,nodead] !" .. name
     end
+    return lines
+end
+
+local function attackLines(petMouseover)
+    local lines = playerAttackLines()
+    table.insert(lines, 1, "/target [@mouseover,harm,nodead]")
     if petMouseover then
         lines[#lines + 1] = "/petattack [@mouseover,harm,nodead,pet]"
     end
@@ -54,9 +60,11 @@ local retarget = {
     "/target [nocombat,@mouseover,exists]",
 }
 
-local petTarget = {
-    "/petattack [@target,harm,nodead,pet]",
-}
+local function petTargetLines()
+    local lines = playerAttackLines()
+    lines[#lines + 1] = "/petattack [@target,harm,nodead,pet]"
+    return lines
+end
 
 local function makeButton(name, lines)
     local button = CreateFrame("Button", name, UIParent, "SecureActionButtonTemplate")
@@ -68,7 +76,7 @@ local function makeButton(name, lines)
 end
 local attackButton = makeButton("InteractFixAttackButton", attackLines(false))
 makeButton("InteractFixRetargetButton", retarget)
-makeButton("InteractFixPetButton", petTarget)
+local petButton = makeButton("InteractFixPetButton", petTargetLines())
 
 local driver = CreateFrame("Frame", "InteractFixDriver", UIParent, "SecureHandlerAttributeTemplate")
 driver:SetAttribute("_onattributechanged", [[
@@ -129,6 +137,7 @@ RegisterAttributeDriver(driver, "state-hover", hoverConditions(applied))
 local function apply()
     local options = currentOptions()
     attackButton:SetAttribute("macrotext", table.concat(attackLines(options.mouse), "\n"))
+    petButton:SetAttribute("macrotext", table.concat(petTargetLines(), "\n"))
     RegisterAttributeDriver(driver, "state-hover", hoverConditions(options))
     if options.target then
         RegisterAttributeDriver(driver, "state-pettarget", TARGET_CONDITIONS)
@@ -197,7 +206,7 @@ local function registerPanel()
         "Pressing the key on a living hostile unit under the cursor also sends your pet at it.")
     addCheckbox("INTERACTFIX_PET_TARGET", "petTarget",
         "Pet attacks your hostile target when nothing is under the cursor",
-        "With nothing under the cursor and a living hostile target, the key sends your pet at the target instead of the stock interact.")
+        "With nothing under the cursor and a living hostile target, the key attacks the target and sends your pet at it, instead of the stock interact.")
     Settings.RegisterAddOnCategory(category)
 end
 
